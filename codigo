@@ -1,0 +1,55 @@
+int TRIG2 = 32;  
+int ECHO2 = 34;
+int Pin2 = 4;
+int TRIG = 33;  
+int ECHO = 35;
+int Pin = 2;
+int DIS;
+int DURA;
+int DIS2;
+int DURA2;
+
+void setup () {
+  Serial.begin(9600);
+  pinMode(TRIG , OUTPUT);
+  pinMode(ECHO , INPUT);
+  pinMode(2, OUTPUT);
+  pinMode(TRIG2 , OUTPUT);
+  pinMode(ECHO2 , INPUT);
+  pinMode(4, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(TRIG , HIGH);
+  delay(1);
+  digitalWrite(TRIG , LOW);
+  DURA = pulseIn(ECHO , HIGH);
+  DIS = DURA / 58,2;
+  Serial.println("sensor ultrasonido");
+  Serial.println(DIS);
+
+  digitalWrite(TRIG2 , HIGH);
+  delay(1);
+  digitalWrite(TRIG2 , LOW);
+  DURA2 = pulseIn(ECHO2 , HIGH);
+  DIS2 = DURA2 / 58,2;
+  Serial.println("sensor ultrasonido22");
+  Serial.println(DIS2);
+
+  if (DIS < 35) {
+    digitalWrite(2, HIGH);
+   }
+  else if (DIS > 35){
+    digitalWrite(2, LOW);
+
+    }
+  if (DIS2 < 35) {
+    digitalWrite(4, HIGH);
+   }
+  else if (DIS2 > 35){
+    digitalWrite(4, LOW);
+   
+delay(300);
+
+}
+}
